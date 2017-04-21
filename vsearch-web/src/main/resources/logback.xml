@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration debug="false">
+    <property name="vsearch.log.pattern"	value="[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] -  [%c][%L] - %m%n" />
+    <property name="vsearch.log.charset"	value="UTF-8" />
+    <property name="vsearch.log.level"	value="INFO" />
+    <property name="vsearch.log.root "	value="logs" />
+
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>${vsearch.log.charset}</charset>
+            <pattern>${vsearch.log.pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="COMMON" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${vsearch.log.root:-../logs/vsearch-logs}/common.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${vsearch.log.root:-../logs/vsearch-logs}/common.log.%d{yyyy-MM-dd}</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <charset>${vsearch.log.charset}</charset>
+            <pattern>${vsearch.log.pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="REDIS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${vsearch.log.root:-../logs/vsearch-logs}/redis.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${vsearch.log.root:-../logs/vsearch-logs}/redis.log.%d{yyyy-MM-dd}</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <charset>${vsearch.log.charset}</charset>
+            <pattern>${vsearch.log.pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${vsearch.log.root:-../logs/vsearch-logs}/error.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${vsearch.log.root:-../logs/vsearch-logs}/error.log.%d{yyyy-MM-dd}</fileNamePattern>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <encoder>
+            <charset>${vsearch.log.charset}</charset>
+            <pattern>${vsearch.log.pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="SPRING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${vsearch.log.root:-../logs/vsearch-logs}/spring.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${vsearch.log.root:-../logs/vsearch-logs}/spring.log.%d{yyyy-MM-dd}</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <charset>${vsearch.log.charset}</charset>
+            <pattern>${vsearch.log.pattern}</pattern>
+        </encoder>
+    </appender>
+
+
+    <logger name="com.ants">
+        <level value="DEBUG" />
+        <appender-ref ref="ERROR"/>
+    </logger>
+
+    <logger name="com.ants.vsearch.dao.redisManager" additivity="false">
+        <level value="${vsearch.log.level}" />
+        <appender-ref ref="REDIS" />
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="ERROR" />
+    </logger>
+
+    <logger name="org.springframework" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="SPRING" />
+        <appender-ref ref="ERROR" />
+    </logger>
+    <logger name="org.springframework.scheduling" additivity="false">
+        <level value="${vsearch.log.level}" />
+        <appender-ref ref="SCHEDULE" />
+        <appender-ref ref="ERROR" />
+    </logger>
+
+    <root>
+        <level value="${vsearch.log.level}" />
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="COMMON" />
+        <appender-ref ref="ERROR" />
+    </root>
+
+</configuration>
