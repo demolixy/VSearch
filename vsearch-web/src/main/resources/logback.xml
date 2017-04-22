@@ -2,7 +2,7 @@
 
 <configuration debug="false">
     <property name="vsearch.log.pattern"	value="[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] -  [%c][%L] - %m%n" />
-    <property name="vsearch.log.charset"	value="UTF-8" />
+    <property name="vsearch.log.charset"	value="GBK" />
     <property name="vsearch.log.level"	value="INFO" />
     <property name="vsearch.log.root "	value="logs" />
 
