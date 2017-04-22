@@ -16,8 +16,15 @@
 		<mybatis.version>3.2.6</mybatis.version>
 		<!-- log4j日志文件管理包版本 -->
 		<slf4j.version>1.7.7</slf4j.version>
-		<log4j.version>1.2.17</log4j.version>
+		<log4j.version>1.2.15</log4j.version>
 	</properties>
+	<repositories>
+		<repository>
+			<id>other2</id>
+			<name>factory</name>
+			<url>http://repository.sonatype.org/content/</url>
+		</repository>
+	</repositories>
 	<build>
 		<plugins>
 			<plugin>
@@ -32,6 +39,7 @@
 	<modules>
 		<module>vsearch-web</module>
 		<module>vsearch-base</module>
+		<module>vsearch-dao-0.0.1-SNAPSHOT</module>
 	</modules>
 	<dependencies>
 		<!-- log back start -->
