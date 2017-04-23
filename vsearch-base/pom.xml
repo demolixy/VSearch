@@ -20,6 +20,11 @@
 			<artifactId>webmagic-extension</artifactId>
 			<version>0.6.1</version>
 		</dependency>
+        <dependency>
+            <groupId>com.thunisoft</groupId>
+            <artifactId>vsearch-dao</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 	</dependencies>
 
 </project>
