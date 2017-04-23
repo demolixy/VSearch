@@ -39,7 +39,7 @@
 	<modules>
 		<module>vsearch-web</module>
 		<module>vsearch-base</module>
-		<module>vsearch-dao-0.0.1-SNAPSHOT</module>
+		<module>vsearch-dao</module>
 	</modules>
 	<dependencies>
 		<!-- log back start -->
