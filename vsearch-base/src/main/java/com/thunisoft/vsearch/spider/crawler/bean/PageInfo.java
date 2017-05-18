@@ -14,6 +14,11 @@ public abstract class PageInfo {
     private String content;
     
     private String url;
+    
+    private String abs;
+    
+    private String auther;
+    
 
     protected abstract void process();
     

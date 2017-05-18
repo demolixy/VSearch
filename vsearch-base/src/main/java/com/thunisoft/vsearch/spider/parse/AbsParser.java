@@ -11,13 +11,22 @@ import com.thunisoft.vsearch.spider.parse.common.AnalyzerFactory;
  */
 public abstract class AbsParser {
 
-    
     protected final static AnalyzerFactory analyzer = AnalyzerFactory.instance;
     
     private String title;
     
     private String content;
     
+    /**
+     * 解析类型
+     * @return
+     */
+    public abstract ParserType parserType() ;
+    
+    /**
+     * 处理字段
+     * @throws Exception
+     */
     protected abstract void process() throws Exception ;
 
     /**
